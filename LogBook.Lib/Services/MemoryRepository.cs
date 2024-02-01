@@ -33,7 +33,7 @@ namespace LogBook.Lib.Services
 		public bool Update(Entry entry)
 		{
 			var item = (from search in this.entries
-					   where search.Id == search.Id
+					   where entry.Id == search.Id
 					   select search).FirstOrDefault();
 
 			if (item != null) {

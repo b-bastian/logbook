@@ -36,6 +36,9 @@ public class XmlRepository : IRepository
     }
 
     public List<Entry> GetAll() {
+        var entries = from entry in this._rootElement.Descendants("entry")
+                        select entry;
 
+        throw new NotImplementedException();
     }
 }
