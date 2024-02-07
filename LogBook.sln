@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 25.0.1706.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogBook.Lib", "LogBook.Lib\LogBook.Lib.csproj", "{A49ABEE6-C304-4458-887A-33CD0FCF34F7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogBook.Cli", "LogBook.Cli\LogBook.Cli.csproj", "{D621CFB8-007C-4D42-A0F3-C59194B07401}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogBook.MApp", "LogBook.MApp\LogBook.MApp.csproj", "{79F566C7-12BB-450F-949E-D9C4D3080782}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogBook.Lib", "LogBook.Lib\LogBook.Lib.csproj", "{C5AB40C3-872B-4EF0-AA2C-69F677CCF00D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A49ABEE6-C304-4458-887A-33CD0FCF34F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A49ABEE6-C304-4458-887A-33CD0FCF34F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A49ABEE6-C304-4458-887A-33CD0FCF34F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A49ABEE6-C304-4458-887A-33CD0FCF34F7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D621CFB8-007C-4D42-A0F3-C59194B07401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D621CFB8-007C-4D42-A0F3-C59194B07401}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D621CFB8-007C-4D42-A0F3-C59194B07401}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,10 @@ Global
 		{79F566C7-12BB-450F-949E-D9C4D3080782}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79F566C7-12BB-450F-949E-D9C4D3080782}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79F566C7-12BB-450F-949E-D9C4D3080782}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5AB40C3-872B-4EF0-AA2C-69F677CCF00D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5AB40C3-872B-4EF0-AA2C-69F677CCF00D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5AB40C3-872B-4EF0-AA2C-69F677CCF00D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5AB40C3-872B-4EF0-AA2C-69F677CCF00D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

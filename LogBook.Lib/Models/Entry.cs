@@ -19,8 +19,9 @@ public class Entry
     public string To { get; set; }
 
     public string Id { get; set; }
-    
-    public Entry(DateTime start, DateTime end, int startKM, int endKM, string numberPlate, string from, string to, string id) {
+
+    public Entry(DateTime start, DateTime end, int startKM, int endKM, string numberPlate, string from, string to, string id)
+    {
         this.Start = start;
         this.End = end;
         this.StartKM = startKM;
@@ -29,9 +30,10 @@ public class Entry
         this.From = from;
         this.To = to;
         this.Id = id;
-    }   
-    
-    public Entry(DateTime start, DateTime end, int startKM, int endKM, string numberPlate, string from, string to) {
+    }
+
+    public Entry(DateTime start, DateTime end, int startKM, int endKM, string numberPlate, string from, string to)
+    {
         this.Start = start;
         this.End = end;
         this.StartKM = startKM;
@@ -40,5 +42,10 @@ public class Entry
         this.From = from;
         this.To = to;
         this.Id = Guid.NewGuid().ToString();
-    }   
+    }
+
+    public override string ToString()
+    {
+        return String.Format($"{this.From} nach {this.To}");
+    }
 }
