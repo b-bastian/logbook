@@ -1,4 +1,4 @@
-﻿using LogBook.MApp.ViewModles;
+﻿using LogBook.MApp.ViewModels;
 using Microsoft.Extensions.Logging;
 
 namespace LogBook.MApp;
