@@ -134,4 +134,31 @@ public class XmlRepository : IRepository
 
         return entries.ToList<Entry>();
     }
+
+    public Entry? Find(string id)
+    {
+        var item = (from e in this._rootElement.Descendants("entry")
+                    where ((string)e.Attribute("id") ?? "") == id
+                    select new Entry(
+                            (DateTime)e.Attribute("start"),
+                            (DateTime)e.Attribute("end"),
+                            (int)e.Attribute("startkm"),
+                            (int)e.Attribute("endkm"),
+                            (string)e.Attribute("numberplate"),
+                            (string)e.Attribute("from"),
+                            (string)e.Attribute("to"),
+                            (string)e.Attribute("id"))
+                    {
+                        Description = e.Value
+                    }).FirstOrDefault();
+
+        if (item != null)
+        {
+            return item;
+        }
+        else
+        {
+            return null;
+        }
+    }
 }
