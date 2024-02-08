@@ -22,5 +22,5 @@ List<Entry> entries = repository.GetAll();
 foreach (var item in entries)
 {
 	Console.WriteLine(item);
-	System.Console.WriteLine(item.Description + "\n");
+	Console.WriteLine(item.Description + "\n");
 }
