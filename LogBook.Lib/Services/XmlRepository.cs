@@ -52,8 +52,10 @@ public class XmlRepository : IRepository
         var numPlateAttrib = new XAttribute("numberplate", entry.NumberPlate.ToString());
         node.Add(numPlateAttrib);
 
-
-        node.Add(entry.Description.ToString());
+        if (entry.Description != null || entry.Description != string.Empty)
+        {
+            node.Add(entry.Description);
+        }
 
         _rootElement.Add(node);
 
@@ -73,6 +75,29 @@ public class XmlRepository : IRepository
 
     public bool Update(Entry entry)
     {
+        var item = (from e in this._rootElement.Descendants("entry")
+                    where ((string)e.Attribute("id") ?? "") == entry.Id
+                    select e).FirstOrDefault();
+
+        if (item != null)
+        {
+            item.SetAttributeValue("start", entry.Start.ToString());
+            item.SetAttributeValue("end", entry.End.ToString());
+            item.SetAttributeValue("startkm", entry.StartKM.ToString());
+            item.SetAttributeValue("endkm", entry.EndKM.ToString());
+            item.SetAttributeValue("numberplate", entry.NumberPlate.ToString());
+            item.SetAttributeValue("to", entry.To.ToString());
+            item.SetAttributeValue("from", entry.From.ToString());
+
+            // ID nicht, da sonst das Element nicht mehr gefunden wird
+
+            return this.Save();
+        }
+        else
+        {
+            return false;
+        }
+
         throw new NotImplementedException();
     }
 
@@ -93,8 +118,20 @@ public class XmlRepository : IRepository
     public List<Entry> GetAll()
     {
         var entries = from entry in this._rootElement.Descendants("entry")
-                      select entry;
+                      select new Entry(
+                            (DateTime)entry.Attribute("start"),
+                            (DateTime)entry.Attribute("end"),
+                            (int)entry.Attribute("startkm"),
+                            (int)entry.Attribute("endkm"),
+                            (string)entry.Attribute("numberplate"),
+                            (string)entry.Attribute("from"),
+                            (string)entry.Attribute("to"),
+                            (string)entry.Attribute("id"))
+                      {
+                          Description = entry.Value
+                      };
 
-        throw new NotImplementedException();
+
+        return entries.ToList<Entry>();
     }
 }
