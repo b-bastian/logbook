@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <entries>
-  <entry id="61907b92-3ed2-4129-bf66-4cafa4379000" start="07.02.2024 13:09:58" end="07.02.2024 15:09:58" startkm="25000" endkm="25180" from="Zell am See" to="München" numberplate="ZE-XY123" />
-  <entry id="eb2c3540-3eda-4cdd-ac30-608b34207116" start="10.02.2024 13:09:58" end="10.02.2024 13:29:58" startkm="25500" endkm="25514" from="Zell am See" to="Saalfelden" numberplate="ZE-XY123">hi</entry>
+  <entry id="c0ae9717-faf9-40f7-8bce-8434d0d69a8c" start="08.02.2024 07:55:37" end="08.02.2024 09:55:37" startkm="25000" endkm="25180" from="Zell am See" to="München" numberplate="ZE-XY123" />
+  <entry id="d2a84c79-a508-4065-807e-0e626429e189" start="11.02.2024 07:55:37" end="11.02.2024 08:15:37" startkm="25500" endkm="25514" from="Zell am See" to="Saalfelden" numberplate="ZE-XY123">Fahrt nach Saalfelden</entry>
+  <entry id="5abeb4ac-08ec-439c-8c82-60d7c72456a9" start="08.02.2024 07:55:57" end="08.02.2024 09:55:57" startkm="25000" endkm="25180" from="Zell am See" to="München" numberplate="ZE-XY123" />
+  <entry id="f5a007dc-10d3-4e52-a209-0368c6804cd7" start="11.02.2024 07:55:58" end="11.02.2024 08:15:58" startkm="25500" endkm="25514" from="Zell am See" to="Saalfelden" numberplate="ZE-XY123">Fahrt nach Saalfelden</entry>
 </entries>
