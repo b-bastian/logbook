@@ -10,6 +10,8 @@ public interface IRepository
 
     bool Update(Entry entry);
 
+    Entry? Find(string id);
+
     bool Save();
 
     List<Entry> GetAll();
