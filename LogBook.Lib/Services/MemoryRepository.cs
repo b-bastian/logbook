@@ -20,6 +20,15 @@ namespace LogBook.Lib.Services
 			return this.entries.Remove(entry);
 		}
 
+		public Entry? Find(string id)
+		{
+			var entries = (from e in this.entries
+						   where e.Id == id
+						   select e).FirstOrDefault();
+
+			return entries;
+		}
+
 		public List<Entry> GetAll()
 		{
 			return this.entries;
@@ -33,10 +42,11 @@ namespace LogBook.Lib.Services
 		public bool Update(Entry entry)
 		{
 			var item = (from search in this.entries
-					   where entry.Id == search.Id
-					   select search).FirstOrDefault();
+						where entry.Id == search.Id
+						select search).FirstOrDefault();
 
-			if (item != null) {
+			if (item != null)
+			{
 				item = entry;
 				return true;
 			}
