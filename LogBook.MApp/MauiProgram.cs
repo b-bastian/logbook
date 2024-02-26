@@ -1,5 +1,9 @@
 ﻿using LogBook.MApp.ViewModels;
 using Microsoft.Extensions.Logging;
+using LogBook.Lib.Services;
+using LogBook.Lib.Interfaces;
+using Debug = System.Diagnostics.Debug;
+using CommunityToolkit.Maui;
 
 namespace LogBook.MApp;
 
@@ -10,6 +14,7 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
+			.UseMauiCommunityToolkit()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -18,6 +23,16 @@ public static class MauiProgram
 
 		builder.Services.AddSingleton<MainViewModel>();
 		builder.Services.AddSingleton<MainPage>();
+		builder.Services.AddSingleton<AppShell>();
+
+		string path = FileSystem.Current.AppDataDirectory;
+		string filename = "data.xml";
+
+		string fullpath = System.IO.Path.Combine(path, filename);
+
+		Debug.WriteLine($"AppDataDirectory: {fullpath}");
+
+		builder.Services.AddSingleton<IRepository>(new XmlRepository(fullpath));
 
 #if DEBUG
 		builder.Logging.AddDebug();

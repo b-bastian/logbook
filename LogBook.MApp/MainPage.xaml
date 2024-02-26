@@ -1,11 +1,115 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LogBook.MApp.MainPage">
+             x:Class="LogBook.MApp.MainPage"
+             xmlns:viewmodels="clr-namespace:LogBook.MApp.ViewModels"
+             x:DataType="viewmodels:MainViewModel"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:models="clr-namespace:LogBook.Lib.Models;assembly=LogBook.Lib">
 
-    <StackLayout>
-        <Label Text="{Binding Header}" />
-    </StackLayout>
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior EventName="Appearing"
+                                        Command="{Binding LoadDataCommand}" />
+    </ContentPage.Behaviors>
 
+    <ScrollView>
+
+        <!-- Hauptgrid -->
+        <Grid RowDefinitions="180,Auto,Auto" Margin="10">
+            <!-- erste Zeile im Hauptgrid-->
+            <Grid RowDefinitions="Auto,*">
+                <!-- Header -->
+                <Grid ColumnDefinitions="100,2*,*,*">
+                    <Label FontSize="Caption" FontAttributes="Bold" Text="Datum" Padding="5" />
+                    <Label Grid.Column="1" FontSize="Caption" FontAttributes="Bold"
+                           Text="Beschreibung" Padding="5" />
+                    <Label Grid.Column="2" FontSize="Caption" FontAttributes="Bold"
+                           Text="Von" Padding="5" />
+                    <Label Grid.Column="3" FontSize="Caption" FontAttributes="Bold"
+                           Text="Nach" Padding="5" />
+                </Grid>
+
+                <!-- Data -->
+                <CollectionView Grid.Row="1" ItemsSource="{Binding Entries}">
+                    <CollectionView.EmptyView>
+                        <Label Text="Es wurde noch keine Fahrt hinzugefügt." Padding="10"/>
+                    </CollectionView.EmptyView>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:Entry">
+                            <Grid ColumnDefinitions="100,2*,*,*">
+                                <Label Text="{Binding Start, StringFormat='0:yyyy-MM-dd'}" Padding="5" />
+                                <Label Grid.Column="1" Text="{Binding Description}" Padding="5" />
+                                <Label Grid.Column="2" Text="{Binding From}" Padding="5" />
+                                <Label Grid.Column="3" Text="{Binding To}" Padding="5" />
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+
+            <!-- Eingabe -->
+            <Grid Grid.Row="2"
+                  ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                  ColumnSpacing="10" RowSpacing="20"
+                  Padding="10">
+                <!-- Header 0/0 span: 2-->
+                <Label Text="Fahrt hinzufügen" FontSize="Subtitle"
+                       SemanticProperties.HeadingLevel="Level2" Grid.ColumnSpan="2" />
+
+                <!-- Start 0/1 -->
+                <StackLayout Grid.Row="1">
+                    <Label Text="Start" />
+                    <DatePicker Date="{Binding Start}" Format="yyyy-MM-dd" />
+                </StackLayout>
+
+                <!-- Ende 1/1 -->
+                <StackLayout Grid.Row="1" Grid.Column="1">
+                    <Label Text="Ende" />
+                    <DatePicker Date="{Binding Ende}" Format="yyyy-MM-dd" />
+                </StackLayout>
+
+                <!-- Beschreibung 2/0 span: 2 -->
+                <StackLayout Grid.Row="2" Grid.ColumnSpan="2">
+                    <Label Text="Beschreibung" />
+                    <Entry Text="{Binding Description}" />
+                </StackLayout>
+
+                <!-- Beschreibung 3/0 span: 2 -->
+                <StackLayout Grid.Row="3" Grid.ColumnSpan="2">
+                    <Label Text="Kennzeichen" />
+                    <Entry Text="{Binding Numberplate}" />
+                </StackLayout>
+
+                <!-- Start KM 4/0 -->
+                <StackLayout Grid.Row="4">
+                    <Label Text="Start-KM" />
+                    <Entry Text="{Binding Startkm}" />
+                </StackLayout>
+
+                <!-- End KM 4/1 -->
+                <StackLayout Grid.Row="4" Grid.Column="1">
+                    <Label Text="End-KM" />
+                    <Entry Text="{Binding Endkm}" />
+                </StackLayout>
+
+                <!-- From 5/0 -->
+                <StackLayout Grid.Row="5">
+                    <Label Text="Von" />
+                    <Entry Text="{Binding From}" />
+                </StackLayout>
+
+                <!-- To 5/1 -->
+                <StackLayout Grid.Row="5" Grid.Column="1">
+                    <Label Text="Nach" />
+                    <Entry Text="{Binding To}" />
+                </StackLayout>
+
+                <!-- Add Button 6/0 span: 2 -->
+                <Button Text="Add demo" Grid.Row="6" Grid.ColumnSpan="2" Command="{Binding AddCommand}" />
+            </Grid>
+            <!-- Ende Eingabe -->
+        </Grid>
+
+    </ScrollView>
 </ContentPage>
 
