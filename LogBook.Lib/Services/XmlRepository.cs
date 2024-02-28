@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Xml.Linq;
 using LogBook.Lib.Interfaces;
 using LogBook.Lib.Models;
+using Microsoft.VisualBasic;
 
 namespace LogBook.Lib.Services;
 

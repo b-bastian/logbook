@@ -24,7 +24,8 @@ public partial class MainViewModel : ObservableObject
 	DateTime _ende = DateTime.Now;
 
     [ObservableProperty]
-    string _description = string.Empty;
+	[NotifyCanExecuteChangedFor(nameof(AddCommand))]
+	string _description = string.Empty;
 
 	[ObservableProperty]
 	string _numberplate = string.Empty;
@@ -58,7 +59,9 @@ public partial class MainViewModel : ObservableObject
         }
     }
 
-    [RelayCommand]
+    private bool CanAdd => this.Description.Length > 0;
+
+    [RelayCommand(CanExecute = nameof(CanAdd))]
     void Add()  
     {
         Entry entry = new Entry(this.Start, this.Ende, this.Startkm, this.Endkm, this.Numberplate, this.From, this.To);
