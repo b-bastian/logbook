@@ -105,7 +105,8 @@
                 </StackLayout>
 
                 <!-- Add Button 6/0 span: 2 -->
-                <Button Text="Add demo" Grid.Row="6" Grid.ColumnSpan="2" Command="{Binding AddCommand}" />
+                <Button Text="Fahrt hinzufügen" Grid.Row="6" Grid.ColumnSpan="2"
+                        Command="{Binding AddCommand}" />
             </Grid>
             <!-- Ende Eingabe -->
         </Grid>

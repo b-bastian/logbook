@@ -61,11 +61,24 @@ public partial class MainViewModel : ObservableObject
     [RelayCommand]
     void Add()  
     {
-        /*
+        Entry entry = new Entry(this.Start, this.Ende, this.Startkm, this.Endkm, this.Numberplate, this.From, this.To);
+
+        if(this.Description.Trim() != string.Empty &&
+            this.Description.Length > 0) {
+            entry.Description = this.Description;
+        }
+      
         var result = this._repository.Add(entry);
 
-        if (result) this.Entries.Add(entry);
-        */
+        if (result) {
+			this.Entries.Add(entry);
+
+            this.Description = string.Empty;
+            this.From = string.Empty;
+            this.To = string.Empty;
+            this.Startkm = Endkm;
+            this.Endkm = 0;
+		}
 	}
 }
 
