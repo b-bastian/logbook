@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using LogBook.Lib.Interfaces;
 using System.Collections.ObjectModel;
 using Entry = LogBook.Lib.Models.Entry;
+using DateTime = System.DateTime;
 
 namespace LogBook.MApp.ViewModels;
 
@@ -15,6 +16,9 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty]
     ObservableCollection<Entry> _entries = new();
 
+    [ObservableProperty]
+    Entry _selectedEntry = null;
+
     #region Properties
 
     [ObservableProperty]
@@ -23,7 +27,7 @@ public partial class MainViewModel : ObservableObject
 	[ObservableProperty]
 	DateTime _ende = DateTime.Now;
 
-    [ObservableProperty]
+	[ObservableProperty]
 	[NotifyCanExecuteChangedFor(nameof(AddCommand))]
 	string _description = string.Empty;
 

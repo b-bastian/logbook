@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Globalization;
 using System.Xml.Linq;
 using LogBook.Lib.Interfaces;
 using LogBook.Lib.Models;
@@ -32,10 +33,11 @@ public class XmlRepository : IRepository
         var idAttrib = new XAttribute("id", entry.Id.ToString());
         node.Add(idAttrib);
 
-        var startAttrib = new XAttribute("start", entry.Start.ToString());
+
+		var startAttrib = new XAttribute("start", entry.Start.ToString("yyyy-MM-dd"));
         node.Add(startAttrib);
 
-        var endAttrib = new XAttribute("end", entry.End.ToString());
+        var endAttrib = new XAttribute("end", entry.End.ToString("yyyy-MM-dd"));
         node.Add(endAttrib);
 
         var startKmAttrib = new XAttribute("startkm", entry.StartKM.ToString());

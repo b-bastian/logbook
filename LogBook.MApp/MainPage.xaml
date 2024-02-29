@@ -15,7 +15,7 @@
     <ScrollView>
 
         <!-- Hauptgrid -->
-        <Grid RowDefinitions="180,Auto,Auto" Margin="10">
+        <Grid RowDefinitions="180,Auto,Auto" ColumnDefinitions="*,*" Margin="10">
             <!-- erste Zeile im Hauptgrid-->
             <Grid RowDefinitions="Auto,*">
                 <!-- Header -->
@@ -30,14 +30,16 @@
                 </Grid>
 
                 <!-- Data -->
-                <CollectionView Grid.Row="1" ItemsSource="{Binding Entries}">
+                <CollectionView Grid.Row="1" ItemsSource="{Binding Entries}"
+                                SelectedItem="{Binding SelectedEntry}"
+                                SelectionMode="Single">
                     <CollectionView.EmptyView>
                         <Label Text="Es wurde noch keine Fahrt hinzugefügt." Padding="10"/>
                     </CollectionView.EmptyView>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Entry">
-                            <Grid ColumnDefinitions="100,2*,*,*">
-                                <Label Text="{Binding Start, StringFormat='0:yyyy-MM-dd'}" Padding="5" />
+                            <Grid ColumnDefinitions="200,2*,*,*">
+                                <Label Text="{Binding Start, StringFormat='{0:yyyy-MM-dd}'}" Padding="5" />
                                 <Label Grid.Column="1" Text="{Binding Description}" Padding="5" />
                                 <Label Grid.Column="2" Text="{Binding From}" Padding="5" />
                                 <Label Grid.Column="3" Text="{Binding To}" Padding="5" />
@@ -109,6 +111,13 @@
                         Command="{Binding AddCommand}" />
             </Grid>
             <!-- Ende Eingabe -->
+
+            <!-- Details -->
+            <Grid Padding="10" IsVisible="{Binding SelectedEntry}">
+
+            </Grid>
+
+
         </Grid>
 
     </ScrollView>
