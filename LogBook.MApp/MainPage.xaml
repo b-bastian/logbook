@@ -12,6 +12,13 @@
                                         Command="{Binding LoadDataCommand}" />
     </ContentPage.Behaviors>
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:IsNullConverter x:Key="IsNullConverter" />
+            <toolkit:IsNotNullConverter x:Key="IsNullNotConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ScrollView>
 
         <!-- Hauptgrid -->
@@ -113,7 +120,7 @@
             <!-- Ende Eingabe -->
 
             <!-- Details -->
-            <Grid Padding="10" IsVisible="{Binding SelectedEntry}">
+            <Grid Padding="10">
 
             </Grid>
 
