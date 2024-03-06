@@ -15,7 +15,8 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <toolkit:IsNullConverter x:Key="IsNullConverter" />
-            <toolkit:IsNotNullConverter x:Key="IsNullNotConverter" />
+            <toolkit:IsNotNullConverter x:Key="IsNotNullConverter" />
+            <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -120,8 +121,14 @@
             <!-- Ende Eingabe -->
 
             <!-- Details -->
-            <Grid Padding="10">
+            <Grid Grid.Column="1" Grid.RowSpan="3" Padding="10" IsVisible="{Binding SelectedEntry, Converter={StaticResource IsNullConverter}}">
+                <Label Text="nicht" FontAttributes="Bold" HorizontalOptions="Center" />
+            </Grid>
 
+            <Grid Grid.Column="1" Grid.RowSpan="3" Padding="10" IsVisible="{Binding SelectedEntry, Converter={StaticResource IsNotNullConverter}}">
+                <StackLayout>
+                    <Label FontSize="Large" TextColor="{StaticResource Primary}" Text="{Binding SelectedEntry.Description}" />
+                </StackLayout>
             </Grid>
 
 
