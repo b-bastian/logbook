@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 using Entry = LogBook.Lib.Models.Entry;
 using DateTime = System.DateTime;
 
-namespace LogBook.MApp.ViewModels;
+namespace LogBook.Core.ViewModels;
 
 public partial class MainViewModel : ObservableObject
 {

@@ -1,4 +1,4 @@
-﻿using LogBook.MApp.ViewModels;
+﻿using LogBook.Core.ViewModels;
 
 namespace LogBook.MApp;
 

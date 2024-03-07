@@ -37,5 +37,12 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LogBook.Lib\LogBook.Lib.csproj" />
+    <ProjectReference Include="..\LogBook.Core\LogBook.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Pages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Pages\" />
   </ItemGroup>
 </Project>

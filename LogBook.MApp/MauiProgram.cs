@@ -1,9 +1,9 @@
-﻿using LogBook.MApp.ViewModels;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using LogBook.Lib.Services;
 using LogBook.Lib.Interfaces;
 using Debug = System.Diagnostics.Debug;
 using CommunityToolkit.Maui;
+using LogBook.Core.ViewModels;
 
 namespace LogBook.MApp;
 

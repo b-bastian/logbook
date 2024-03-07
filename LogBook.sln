@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogBook.MApp", "LogBook.MAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogBook.Lib", "LogBook.Lib\LogBook.Lib.csproj", "{C5AB40C3-872B-4EF0-AA2C-69F677CCF00D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogBook.Core", "LogBook.Core\LogBook.Core.csproj", "{2D46BF1A-4528-4240-BB21-0F181CAA37EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{C5AB40C3-872B-4EF0-AA2C-69F677CCF00D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5AB40C3-872B-4EF0-AA2C-69F677CCF00D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5AB40C3-872B-4EF0-AA2C-69F677CCF00D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D46BF1A-4528-4240-BB21-0F181CAA37EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D46BF1A-4528-4240-BB21-0F181CAA37EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D46BF1A-4528-4240-BB21-0F181CAA37EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D46BF1A-4528-4240-BB21-0F181CAA37EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
