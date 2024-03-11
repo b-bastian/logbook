@@ -4,6 +4,7 @@ using LogBook.Lib.Interfaces;
 using Debug = System.Diagnostics.Debug;
 using CommunityToolkit.Maui;
 using LogBook.Core.ViewModels;
+using LogBook.MApp.Pages;
 
 namespace LogBook.MApp;
 
@@ -21,10 +22,18 @@ public static class MauiProgram
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 			});
 
+		// add mainviewmodel & mainpage
 		builder.Services.AddSingleton<MainViewModel>();
 		builder.Services.AddSingleton<MainPage>();
+
+		// add reportpage & reportviewmodel
+		builder.Services.AddSingleton<ReportPage>();
+		builder.Services.AddSingleton<ReportViewModel>();
+
+		// add appshell
 		builder.Services.AddSingleton<AppShell>();
 
+		// add irepository & path for the xmlrepository
 		string path = FileSystem.Current.AppDataDirectory;
 		string filename = "data.xml";
 

@@ -41,8 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Pages\" />
+    <None Remove="Resources\Images\chart.svg" />
+    <None Remove="Resources\Images\list.svg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Images\chart.svg" />
+    <BundleResource Include="Resources\Images\list.svg" />
   </ItemGroup>
 </Project>

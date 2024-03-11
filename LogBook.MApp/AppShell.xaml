@@ -4,12 +4,24 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:LogBook.MApp"
+    xmlns:pages="clr-namespace:LogBook.MApp.Pages"
     Shell.FlyoutBehavior="Disabled">
 
+    <!--
     <ShellContent
         Title="Fahrtenbuch"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
+    -->
+
+    <TabBar>
+        <Tab Title="Fahrtenbuch" Icon="list.png">
+            <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+        </Tab>
+        <Tab Title="Bericht" Icon="chart.png">
+            <ShellContent ContentTemplate="{DataTemplate pages:ReportPage}" />
+        </Tab>
+    </TabBar>
 
 </Shell>
 
