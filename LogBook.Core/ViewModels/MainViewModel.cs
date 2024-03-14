@@ -4,16 +4,24 @@ using LogBook.Lib.Interfaces;
 using System.Collections.ObjectModel;
 using Entry = LogBook.Lib.Models.Entry;
 using DateTime = System.DateTime;
+using LogBook.Core.Services;
 
 namespace LogBook.Core.ViewModels;
-
-public partial class MainViewModel : ObservableObject
+// primärer Konstruktor
+public partial class MainViewModel /*(IRepository repositroy, IAlertService alertService)*/ : ObservableObject
 {
     public string Header => "Fahrtenbuch";
 
-    IRepository _repository;
+    // primärer Konstruktor
+	// IRepository _repository = repository;
+	// IAlertServce _alertService = alertService;
 
-    [ObservableProperty]
+	IRepository _repository;
+	IAlertService _alertService;
+
+    private bool _isLoaded = false;
+
+	[ObservableProperty]
     ObservableCollection<Entry> _entries = new();
 
     [ObservableProperty]
@@ -48,19 +56,27 @@ public partial class MainViewModel : ObservableObject
 
 	#endregion
 
-	public MainViewModel(IRepository repository)
+	public MainViewModel(IRepository repository, IAlertService alertService)
     {
         this._repository = repository;
+        this._alertService = alertService;
     }
 
     [RelayCommand]
     void LoadData()
     {
-        var entries = this._repository.GetAll();
+        // Performance leidet darunter
+        // this.Entries.Clear();
 
-        foreach (var entry in entries) {
-            Entries.Add(entry);
-        }
+        if(!this._isLoaded) {
+			var entries = this._repository.GetAll();
+
+			foreach (var entry in entries) {
+				Entries.Add(entry);
+			}
+
+			this._isLoaded = true;
+		}
     }
 
     private bool CanAdd => this.Description.Length > 0;
@@ -85,6 +101,30 @@ public partial class MainViewModel : ObservableObject
             this.To = string.Empty;
             this.Startkm = Endkm;
             this.Endkm = 0;
+		}
+	}
+
+	[RelayCommand]
+	void Delete(Entry entry)
+	{
+		Entry entryToDelete = this._repository.Find(entry.Id);
+
+		if (entryToDelete != null) {
+			var res = this._repository.Delete(entryToDelete);
+
+			if (res) {
+				this.SelectedEntry = null;
+				this.Entries.Remove(entry);
+
+				this._alertService.ShowAlert("Erfolgreich", "Der Eintrag wurde gelöscht.");
+			} else {
+                // alert not possible to delete from
+                this._alertService.ShowAlert("Fehler", "Der Eintrag konnte nicht gelöscht werden.");
+			}
+		} else {
+			// alert entry not found
+			this._alertService.ShowAlert("Fehler", "Der Eintrag konnte nicht gefunden werden.");
+
 		}
 	}
 }

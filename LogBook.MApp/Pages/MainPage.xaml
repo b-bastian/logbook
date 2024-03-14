@@ -156,7 +156,12 @@
                     <Label FontSize="Medium"
                            Text="{Binding SelectedEntry.EndKM, StringFormat='Ankunft-KM: {0}'}" />
 
-                    <Button Text="Fahrt löschen" FontSize="Medium" Background="{StaticResource Red950}" />
+                    <Button Text="Fahrt löschen"
+                            FontSize="Medium"
+                            TextColor="White"
+                            Background="{StaticResource Red950}"
+                            Command="{Binding DeleteCommand}"
+                            CommandParameter="{Binding SelectedEntry}" />
                 </StackLayout>
             </Grid>
 

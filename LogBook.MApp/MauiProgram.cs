@@ -5,6 +5,9 @@ using Debug = System.Diagnostics.Debug;
 using CommunityToolkit.Maui;
 using LogBook.Core.ViewModels;
 using LogBook.MApp.Pages;
+using LogBook.Core.Services;
+using LogBook.MApp.Services;
+using Syncfusion.Maui.Core.Hosting;
 
 namespace LogBook.MApp;
 
@@ -16,6 +19,7 @@ public static class MauiProgram
 		builder
 			.UseMauiApp<App>()
 			.UseMauiCommunityToolkit()
+			.ConfigureSyncfusionCore()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -42,6 +46,9 @@ public static class MauiProgram
 		Debug.WriteLine($"AppDataDirectory: {fullpath}");
 
 		builder.Services.AddSingleton<IRepository>(new XmlRepository(fullpath));
+
+		// add ialertservice
+		builder.Services.AddSingleton<IAlertService, AlertService>();
 
 #if DEBUG
 		builder.Logging.AddDebug();
