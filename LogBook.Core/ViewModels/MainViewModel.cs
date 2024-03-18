@@ -5,6 +5,8 @@ using System.Collections.ObjectModel;
 using Entry = LogBook.Lib.Models.Entry;
 using DateTime = System.DateTime;
 using LogBook.Core.Services;
+using CommunityToolkit.Mvvm.Messaging;
+using LogBook.Core.Messages;
 
 namespace LogBook.Core.ViewModels;
 // primärer Konstruktor
@@ -101,6 +103,8 @@ public partial class MainViewModel /*(IRepository repositroy, IAlertService aler
             this.To = string.Empty;
             this.Startkm = Endkm;
             this.Endkm = 0;
+
+			WeakReferenceMessenger.Default.Send(new AddMessage(entry));
 		}
 	}
 

@@ -55,7 +55,7 @@ public class XmlRepository : IRepository
         var numPlateAttrib = new XAttribute("numberplate", entry.NumberPlate.ToString());
         node.Add(numPlateAttrib);
 
-        if (entry.Description != null || entry.Description != string.Empty)
+        if (entry.Description != null)
         {
             node.Add(entry.Description);
         }

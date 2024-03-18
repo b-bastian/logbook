@@ -123,7 +123,7 @@
 
             <!-- Details -->
             <Grid Grid.Column="1" Grid.RowSpan="3" Padding="10" IsVisible="{Binding SelectedEntry, Converter={StaticResource IsNullConverter}}">
-                <Label Text="nicht" FontAttributes="Bold" HorizontalOptions="Center" />
+                <Label Text="" FontAttributes="Bold" HorizontalOptions="Center" />
             </Grid>
 
             <Grid Grid.Column="1" Grid.RowSpan="3" Padding="10" IsVisible="{Binding SelectedEntry, Converter={StaticResource IsNotNullConverter}}">

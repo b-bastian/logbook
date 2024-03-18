@@ -50,6 +50,9 @@ public static class MauiProgram
 		// add ialertservice
 		builder.Services.AddSingleton<IAlertService, AlertService>();
 
+		// add syncfusion license
+		Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NAaF1cVGhNYVJ1WmFZfVpgd19EY1ZTQWYuP1ZhSXxXdkZiUX9YdHZRR2leVkc=");
+
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
