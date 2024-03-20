@@ -1,3 +1,5 @@
+using System;
+
 namespace LogBook.Lib.Models;
 
 public class Entry
@@ -22,7 +24,9 @@ public class Entry
 
     public string Id { get; set; }
 
-    public Entry(DateTime start, DateTime end, int startKM, int endKM, string numberPlate, string from, string to, string id)
+    public bool Favorite { get; set; } = false;
+
+    public Entry(DateTime start, DateTime end, int startKM, int endKM, string numberPlate, string from, string to, string id, bool favorite)
     {
         this.Start = start;
         this.End = end;
@@ -31,10 +35,11 @@ public class Entry
         this.NumberPlate = numberPlate;
         this.From = from;
         this.To = to;
-        this.Id = id;
+		this.Favorite = favorite;
+		this.Id = id;
     }
 
-    public Entry(DateTime start, DateTime end, int startKM, int endKM, string numberPlate, string from, string to)
+    public Entry(DateTime start, DateTime end, int startKM, int endKM, string numberPlate, string from, string to, bool favorite)
     {
         this.Start = start;
         this.End = end;
@@ -43,6 +48,7 @@ public class Entry
         this.NumberPlate = numberPlate;
         this.From = from;
         this.To = to;
+        this.Favorite = favorite;
         this.Id = Guid.NewGuid().ToString();
     }
 

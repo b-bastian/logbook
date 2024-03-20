@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using LogBook.Lib.Models;
 
 namespace LogBook.Lib.Interfaces;

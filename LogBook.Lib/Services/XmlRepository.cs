@@ -1,5 +1,9 @@
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
+using System.Linq;
 using System.Xml.Linq;
 using LogBook.Lib.Interfaces;
 using LogBook.Lib.Models;
@@ -52,7 +56,10 @@ public class XmlRepository : IRepository
         var toAttrib = new XAttribute("to", entry.To.ToString());
         node.Add(toAttrib);
 
-        var numPlateAttrib = new XAttribute("numberplate", entry.NumberPlate.ToString());
+		var favAttrib = new XAttribute("favorite", entry.Favorite.ToString());
+		node.Add(favAttrib);
+
+		var numPlateAttrib = new XAttribute("numberplate", entry.NumberPlate.ToString());
         node.Add(numPlateAttrib);
 
         if (entry.Description != null)
@@ -91,10 +98,11 @@ public class XmlRepository : IRepository
             item.SetAttributeValue("numberplate", entry.NumberPlate.ToString());
             item.SetAttributeValue("to", entry.To.ToString());
             item.SetAttributeValue("from", entry.From.ToString());
+			item.SetAttributeValue("favorite", entry.Favorite.ToString());
 
-            // ID nicht, da sonst das Element nicht mehr gefunden wird
+			// ID nicht, da sonst das Element nicht mehr gefunden wird
 
-            return this.Save();
+			return this.Save();
         }
         else
         {
@@ -129,7 +137,9 @@ public class XmlRepository : IRepository
                             (string)entry.Attribute("numberplate"),
                             (string)entry.Attribute("from"),
                             (string)entry.Attribute("to"),
-                            (string)entry.Attribute("id"))
+                            (string)entry.Attribute("id"),
+                            (bool)entry.Attribute("favorite")
+                            )
                       {
                           Description = entry.Value
                       };
@@ -150,7 +160,9 @@ public class XmlRepository : IRepository
                             (string)e.Attribute("numberplate"),
                             (string)e.Attribute("from"),
                             (string)e.Attribute("to"),
-                            (string)e.Attribute("id"))
+                            (string)e.Attribute("id"),
+                            (bool)e.Attribute("favorite")
+                            )
                     {
                         Description = e.Value
                     }).FirstOrDefault();

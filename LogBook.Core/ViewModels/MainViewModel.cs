@@ -7,6 +7,7 @@ using DateTime = System.DateTime;
 using LogBook.Core.Services;
 using CommunityToolkit.Mvvm.Messaging;
 using LogBook.Core.Messages;
+using Entry = LogBook.Lib.
 
 namespace LogBook.Core.ViewModels;
 // primärer Konstruktor
