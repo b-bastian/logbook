@@ -7,7 +7,6 @@ using DateTime = System.DateTime;
 using LogBook.Core.Services;
 using CommunityToolkit.Mvvm.Messaging;
 using LogBook.Core.Messages;
-using Entry = LogBook.Lib.
 
 namespace LogBook.Core.ViewModels;
 // primärer Konstruktor
@@ -59,6 +58,26 @@ public partial class MainViewModel /*(IRepository repositroy, IAlertService aler
 
 	#endregion
 
+	[RelayCommand]
+	void ToggleFavorite(Entry entry)
+	{
+		entry.Favorite = !entry.Favorite;
+
+		var result = this._repository.Update(entry);
+		
+		if(result) {
+			int pos = this.Entries.IndexOf(entry);
+
+			if(pos != -1) {
+				this.Entries[pos] = entry;
+
+				this._alertService.ShowAlert("Erfolg", "Der Status wurde geändert!");
+			} else {
+				this._alertService.ShowAlert("Fehler", "Der Status konnte nicht geändert werden!");
+			}
+		}
+	}
+
 	public MainViewModel(IRepository repository, IAlertService alertService)
     {
         this._repository = repository;
@@ -87,7 +106,7 @@ public partial class MainViewModel /*(IRepository repositroy, IAlertService aler
     [RelayCommand(CanExecute = nameof(CanAdd))]
     void Add()  
     {
-        Entry entry = new Entry(this.Start, this.Ende, this.Startkm, this.Endkm, this.Numberplate, this.From, this.To);
+        Entry entry = new Entry(this.Start, this.Ende, this.Startkm, this.Endkm, this.Numberplate, this.From, this.To, false);
 
         if(this.Description.Trim() != string.Empty &&
             this.Description.Length > 0) {

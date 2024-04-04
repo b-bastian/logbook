@@ -28,14 +28,31 @@
             <!-- erste Zeile im Hauptgrid-->
             <Grid RowDefinitions="Auto,*">
                 <!-- Header -->
-                <Grid ColumnDefinitions="100,2*,*,*">
-                    <Label FontSize="Caption" FontAttributes="Bold" Text="Datum" Padding="5" />
-                    <Label Grid.Column="1" FontSize="Caption" FontAttributes="Bold"
-                           Text="Beschreibung" Padding="5" />
-                    <Label Grid.Column="2" FontSize="Caption" FontAttributes="Bold"
-                           Text="Von" Padding="5" />
-                    <Label Grid.Column="3" FontSize="Caption" FontAttributes="Bold"
-                           Text="Nach" Padding="5" />
+                <Grid ColumnDefinitions="80,100,2*,*,*">
+                    <Label FontSize="Caption"
+                           FontAttributes="Bold"
+                           Text="Markierung"
+                           Padding="5" />
+                    <Label FontSize="Caption"
+                           FontAttributes="Bold"
+                           Text="Datum"
+                           Padding="5"
+                           Grid.Column="1" />
+                    <Label Grid.Column="2"
+                           FontSize="Caption"
+                           FontAttributes="Bold"
+                           Text="Beschreibung"
+                           Padding="5" />
+                    <Label Grid.Column="3"
+                           FontSize="Caption"
+                           FontAttributes="Bold"
+                           Text="Von"
+                           Padding="5" />
+                    <Label Grid.Column="4"
+                           FontSize="Caption"
+                           FontAttributes="Bold"
+                           Text="Nach"
+                           Padding="5" />
                 </Grid>
 
                 <!-- Data -->
@@ -47,11 +64,50 @@
                     </CollectionView.EmptyView>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="models:Entry">
-                            <Grid ColumnDefinitions="200,2*,*,*">
-                                <Label Text="{Binding Start, StringFormat='{0:yyyy-MM-dd}'}" Padding="5" />
-                                <Label Grid.Column="1" Text="{Binding Description}" Padding="5" />
-                                <Label Grid.Column="2" Text="{Binding From}" Padding="5" />
-                                <Label Grid.Column="3" Text="{Binding To}" Padding="5" />
+                            <Grid ColumnDefinitions="80,200,2*,*,*">
+                                <!-- Image Star Empty -->
+                                <Image VerticalOptions="Center"
+                                       HorizontalOptions="Center"
+                                       Source="star_empty.png"
+                                       IsVisible="{Binding Favorite}"
+                                       HeightRequest="15">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding
+                                            Source={RelativeSource AncestorType={x:Type
+                                            viewmodels:MainViewModel}}, Path=ToggleFavoriteCommand}"
+                                            CommandParameter="{Binding .}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+
+                                <!-- Image Star -->
+                                <Image VerticalOptions="Center"
+                                       HorizontalOptions="Center"
+                                       Source="star.png"
+                                       IsVisible="{Binding Favorite,
+                                                   Converter={StaticResource InvertedBoolConverter}}"
+                                       HeightRequest="15">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            Command="{Binding
+                                            Source={RelativeSource AncestorType={x:Type
+                                            viewmodels:MainViewModel}}, Path=ToggleFavoriteCommand}"
+                                            CommandParameter="{Binding .}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+
+                                <Label Grid.Column="1"
+                                       Text="{Binding Start, StringFormat='{0:yyyy-MM-dd}'}"
+                                       Padding="5" />
+                                <Label Grid.Column="2"
+                                       Text="{Binding Description}"
+                                       Padding="5" />
+                                <Label Grid.Column="3"
+                                       Text="{Binding From}"
+                                       Padding="5" />
+                                <Label Grid.Column="4"
+                                       Text="{Binding To}"
+                                       Padding="5" />
                             </Grid>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>

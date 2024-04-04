@@ -1,12 +1,17 @@
-﻿using Microsoft.Extensions.Logging;
-using LogBook.Lib.Services;
-using LogBook.Lib.Interfaces;
-using Debug = System.Diagnostics.Debug;
+﻿using System.Diagnostics;
 using CommunityToolkit.Maui;
-using LogBook.Core.ViewModels;
-using LogBook.MApp.Pages;
 using LogBook.Core.Services;
+using LogBook.Core.ViewModels;
+using LogBook.Lib.Interfaces;
+using LogBook.Lib.Services;
+using LogBook.MApp.Pages;
 using LogBook.MApp.Services;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Controls.Hosting;
+using Microsoft.Maui.Hosting;
+using Microsoft.Maui.Storage;
+using Syncfusion.Maui;
 using Syncfusion.Maui.Core.Hosting;
 
 namespace LogBook.MApp;

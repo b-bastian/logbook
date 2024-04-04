@@ -45,6 +45,8 @@
     <None Remove="Resources\Images\chart.svg" />
     <None Remove="Resources\Images\list.svg" />
     <None Remove="Services\" />
+    <None Remove="Resources\Images\star_empty.svg" />
+    <None Remove="Resources\Images\star.svg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\" />
@@ -53,5 +55,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\Images\chart.svg" />
     <BundleResource Include="Resources\Images\list.svg" />
+    <BundleResource Include="Resources\Images\star_empty.svg" />
+    <BundleResource Include="Resources\Images\star.svg" />
   </ItemGroup>
 </Project>
