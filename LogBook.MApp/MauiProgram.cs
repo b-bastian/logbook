@@ -6,12 +6,7 @@ using LogBook.Lib.Interfaces;
 using LogBook.Lib.Services;
 using LogBook.MApp.Pages;
 using LogBook.MApp.Services;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Maui.Controls.Hosting;
-using Microsoft.Maui.Hosting;
-using Microsoft.Maui.Storage;
-using Syncfusion.Maui;
 using Syncfusion.Maui.Core.Hosting;
 
 namespace LogBook.MApp;
@@ -44,13 +39,14 @@ public static class MauiProgram
 
 		// add irepository & path for the xmlrepository
 		string path = FileSystem.Current.AppDataDirectory;
-		string filename = "data.xml";
+		string filename = "data.sqlite";
 
 		string fullpath = System.IO.Path.Combine(path, filename);
 
 		Debug.WriteLine($"AppDataDirectory: {fullpath}");
 
-		builder.Services.AddSingleton<IRepository>(new XmlRepository(fullpath));
+		// builder.Services.AddSingleton<IRepository>(new XmlRepository(fullpath));
+		builder.Services.AddSingleton<IRepository>(new DatabaseRepository(fullpath));
 
 		// add ialertservice
 		builder.Services.AddSingleton<IAlertService, AlertService>();
