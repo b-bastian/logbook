@@ -37,8 +37,12 @@
     <PackageReference Include="Syncfusion.Maui.Charts" Version="24.2.9" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LogBook.Lib\LogBook.Lib.csproj" />
-    <ProjectReference Include="..\LogBook.Core\LogBook.Core.csproj" />
+    <ProjectReference Include="..\LogBook.Lib\LogBook.Lib.csproj">
+      <ReferenceSourceTarget></ReferenceSourceTarget>
+    </ProjectReference>
+    <ProjectReference Include="..\LogBook.Core\LogBook.Core.csproj">
+      <ReferenceSourceTarget></ReferenceSourceTarget>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Remove="Pages\" />

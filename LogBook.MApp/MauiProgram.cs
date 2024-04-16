@@ -39,14 +39,15 @@ public static class MauiProgram
 
 		// add irepository & path for the xmlrepository
 		string path = FileSystem.Current.AppDataDirectory;
-		string filename = "data.sqlite";
+		string filename = "data.csv";
 
 		string fullpath = System.IO.Path.Combine(path, filename);
 
 		Debug.WriteLine($"AppDataDirectory: {fullpath}");
 
 		// builder.Services.AddSingleton<IRepository>(new XmlRepository(fullpath));
-		builder.Services.AddSingleton<IRepository>(new DatabaseRepository(fullpath));
+		// builder.Services.AddSingleton<IRepository>(new DatabaseRepository(fullpath));
+		builder.Services.AddSingleton<IRepository>(new CsvRepository(fullpath));
 
 		// add ialertservice
 		builder.Services.AddSingleton<IAlertService, AlertService>();

@@ -26,6 +26,11 @@ public class Entry
 
     public bool Favorite { get; set; } = false;
 
+    public Entry()
+    {
+
+    }
+
     public Entry(DateTime start, DateTime end, int startKM, int endKM, string numberPlate, string from, string to, string id, bool favorite)
     {
         this.Start = start;
